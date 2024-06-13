@@ -1,70 +1,69 @@
-access(all) contract SomeContract {
-    pub var testStruct: SomeStruct
+access(all) contract BookLibraryContract {
+    pub var library: BookCollection
 
-    pub struct SomeStruct {
+    pub struct BookCollection {
 
         //
         // 4 Variables
         //
 
-        pub(set) var a: String
+        pub(set) var title: String
 
-        pub var b: String
+        pub var author: String
 
-        access(contract) var c: String
+        access(contract) var isbn: String
 
-        access(self) var d: String
+        access(self) var publisher: String
 
         //
         // 3 Functions
         //
 
-        pub fun publicFunc() {}
+        pub fun displayBookInfo() {}
 
-        access(contract) fun contractFunc() {}
+        access(contract) fun catalogBook() {}
 
-        access(self) fun privateFunc() {}
+        access(self) fun editPublisher() {}
 
-
-        pub fun structFunc() {
+        pub fun collectionFunc() {
             /**************/
             /*** AREA 1 ***/
             /**************/
         }
 
         init() {
-            self.a = "a"
-            self.b = "b"
-            self.c = "c"
-            self.d = "d"
+            self.title = "Default Title"
+            self.author = "Unknown Author"
+            self.isbn = "000-0000000000"
+            self.publisher = "Unknown Publisher"
         }
     }
 
-    pub resource SomeResource {
-        pub var e: Int
+    pub resource BookResource {
+        pub var copiesAvailable: Int
 
-        pub fun resourceFunc() {
+        pub fun manageCopies() {
             /**************/
             /*** AREA 2 ***/
             /**************/
         }
 
         init() {
-            self.e = 17
+            self.copiesAvailable = 5
         }
     }
 
-    pub fun createSomeResource(): @SomeResource {
-        return <- create SomeResource()
+    pub fun createBookResource(): @BookResource {
+        return <- create BookResource()
     }
 
-    pub fun questsAreFun() {
+    pub fun manageLibrary() {
         /**************/
         /*** AREA 3 ****/
         /**************/
     }
 
     init() {
-        self.testStruct = SomeStruct()
+        self.library = BookCollection()
     }
 }
