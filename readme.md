@@ -4,7 +4,7 @@ This folder contains source code that explains access control in Cadence Languag
 
 ## Author
 
-Satyam
+Pushpanjali SHUKLA
 
 ## License
 
